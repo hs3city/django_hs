@@ -20,3 +20,8 @@ def hello_json(request):
 class UsersList(ListView):
     model = User
     template_name = 'hello/users.html'
+
+
+class UsersList2(ListView):
+    model = User
+    template_name = 'hello/users.html'
