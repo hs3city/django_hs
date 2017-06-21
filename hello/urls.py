@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^test/$', views.index, name='index'),
     url(r'^json/$', views.hello_json, name="hello_json"),
     url(r'^$', views.hello_show, name="hello_show"),
-    url(r'^users/$', UsersList.as_view()),
+    url(r'^users/$', UsersList.as_view(), name='user_list'),
 ]
