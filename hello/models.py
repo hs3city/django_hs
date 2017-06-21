@@ -6,6 +6,7 @@ from django.db import models
 class ShoppingItem(models.Model):
     name = models.CharField(max_length=50)
     quantity = models.IntegerField()
+    job = models.ForeignKey('Job')
 
 
 class Job(models.Model):
@@ -18,3 +19,4 @@ class Department(models.Model):
 
 class Section(models.Model):
     name = models.CharField(max_length=120)
+    department = models.ForeignKey('Department')
