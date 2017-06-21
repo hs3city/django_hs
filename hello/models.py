@@ -3,10 +3,11 @@ from django.db import models
 
 # Create your models here.
 
-class ShoppingItem(models.Model):
+class User(models.Model):
     name = models.CharField(max_length=50)
-    quantity = models.IntegerField()
+    points = models.IntegerField()
     job = models.ForeignKey('Job')
+    section = models.ForeignKey('Section')
 
 
 class Job(models.Model):

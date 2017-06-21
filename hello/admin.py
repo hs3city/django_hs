@@ -1,14 +1,14 @@
 from django.contrib import admin
-from hello.models import ShoppingItem, Department, Section, Job
+from hello.models import User, Department, Section, Job
 
 
-admin.site.register(ShoppingItem)
+admin.site.register(User)
 admin.site.register(Department)
 admin.site.register(Section)
 admin.site.register(Job)
 
 
-class ShoppingItemAdmin(admin.ModelAdmin):
+class UserAdmin(admin.ModelAdmin):
     pass
 
 
