@@ -6,3 +6,15 @@ from django.db import models
 class ShoppingItem(models.Model):
     name = models.CharField(max_length=50)
     quantity = models.IntegerField()
+
+
+class Job(models.Model):
+    jobtitle = models.CharField(max_length=50)
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=120)
+
+
+class Section(models.Model):
+    name = models.CharField(max_length=120)
