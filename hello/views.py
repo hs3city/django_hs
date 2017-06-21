@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-
+from django.views.generic import ListView
 from hello.models import User
 
 
@@ -15,3 +15,8 @@ def hello_show(request):
 
 def hello_json(request):
     return JsonResponse({'hello': 'world'})
+
+
+class UsersList(ListView):
+    model = User
+    template_name = 'hello/users.html'
