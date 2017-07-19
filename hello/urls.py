@@ -12,9 +12,5 @@ urlpatterns = [
     url(r'^users/$', UsersList.as_view(), name='user_list'),
     url(r'^users2/$', UsersList2.as_view(), name='user_list2'),
 ]
-#
-# if settings.DEBUG:
-#     import debug_toolbar
-#     urlpatterns += [
-#         url(r'^__debug__/', include(debug_toolbar.urls)),
-#     ]
+
+

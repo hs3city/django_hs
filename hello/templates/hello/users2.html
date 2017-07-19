@@ -1,15 +1,19 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Użytkownicy</title>
 </head>
 <body>
-<p>Lista użytkowników!</p>
+<p>Rozszerzona Lista użytkowników!</p>
 
 <ul>
     {% for user in object_list %}
-    <li>{{ user.name }}</li>
+    <li>{{ user.name }},
+        {{ user.job }},
+        {{ user.section.name }},
+        {{ user.section.department }}</li>
     {% endfor %}
 </ul>
 

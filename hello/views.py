@@ -24,4 +24,5 @@ class UsersList(ListView):
 
 class UsersList2(ListView):
     model = User
-    template_name = 'hello/users.html'
+    template_name = 'hello/users2.html'
+    queryset = User.objects.select_related('job', 'section__department')
