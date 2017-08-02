@@ -1,7 +1,11 @@
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
-from hello.models import User
+from django.views.generic.edit import CreateView
+from hello.models import User, Job
+from hello.forms import JobForm
+
+
 
 
 def index(request):
@@ -20,6 +24,14 @@ def hello_json(request):
 class UsersList(ListView):
     model = User
     template_name = 'hello/users.html'
+
+
+class AddJob(CreateView):
+    model = Job
+    fields = ['jobtitle']
+
+    def get_success_url(self):
+        return '/'
 
 
 class UsersList2(ListView):
