@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
 <p>Hello World!</p>
 <a href="{% url 'hello:index' %}">Kliknij</a><br/>
 <a href="{% url 'hello:user_list' %}">Lista użytkowników</a><br/>
 <a href="{% url 'hello:user_list2' %}">Rozszerzona lista użytkowników</a>
-</body>
-</html>
+
+{% endblock %}
