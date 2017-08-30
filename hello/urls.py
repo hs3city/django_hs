@@ -1,5 +1,4 @@
 from django.conf.urls import include, url
-from django.conf import settings
 from . import views
 from hello.views import UsersList, UsersList2, AddJob
 
