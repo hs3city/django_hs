@@ -5,8 +5,11 @@ class Category(models.Model):
     name = models.CharField(max_length=20)
 
     class Meta:
-        verbose_name = 'Kategoria'
-        verbose_name_plural = 'Kategorie'
+        verbose_name = 'kategoria'
+        verbose_name_plural = 'kategorie'
+
+    def __str__(self):
+        return self.name
 
 
 class ToDo(models.Model):
@@ -33,4 +36,9 @@ class ToDo(models.Model):
     difficulty = models.IntegerField(choices=DIFFICULTY)
     category = models.ForeignKey(Category)
 
+    class Meta:
+        verbose_name = 'zadanie'
+        verbose_name_plural = 'zadania'
 
+    def __str__(self):
+        return self.name

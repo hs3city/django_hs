@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'templa/', include('templa.urls')),
     url(r'form/', include('form.urls')),
     url(r'', include('hello.urls')),
+    url(r'^todo/', include('todo.urls'))
 ]
 
 if settings.DEBUG:
