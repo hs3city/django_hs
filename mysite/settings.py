@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'todo',
-    'hello',
-    'form',
-    'templa',
+    # 'hello',
+    # 'form',
+    # 'templa',
 ]
 
 MIDDLEWARE = [

@@ -13,7 +13,6 @@ urlpatterns = [
     url(r'^add_job/$', AddJob.as_view(), name='add_job'),
     url(r'^users2/$', UsersList2.as_view(), name='user_list2'),
 
-
 ]
 
 

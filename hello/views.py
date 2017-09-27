@@ -6,8 +6,6 @@ from hello.models import User, Job
 from hello.forms import JobForm
 
 
-
-
 def index(request):
     items = User.objects.all()
     return render(request, 'hello/test.html', context={'items': items})

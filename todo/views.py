@@ -1,7 +1,11 @@
-
 from django.views.generic import ListView, CreateView
+from django.shortcuts import render
 from todo.models import ToDo
 from todo.forms import ToDoForm
+
+
+def hello_show(request):
+    return render(request, 'start.html', {})
 
 
 class TodoList(ListView):
