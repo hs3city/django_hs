@@ -6,9 +6,6 @@ import todo.views as todo
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', todo.hello_show),
-    # url(r'templa/', include('templa.urls')),
-    # url(r'form/', include('form.urls')),
-    # url(r'', include('hello.urls')),
     url(r'^/', include('todo.urls'))
 ]
 
