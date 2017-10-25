@@ -5,8 +5,45 @@
 
 <ul>
     {% for todo in object_list %}
-    <li>{{ todo.name }}</li>
+    <li>{{ todo.name }} {{todo.date_created}}</li>
     {% endfor %}
+
+    <p></p>
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nazwa</th>
+      <th>Kategoria</th>
+      <th>Opis</th>
+      <th>Status</th>
+      <th>Data utworzenia</th>
+      <th>Deadline</th>
+        <th>DONE</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for todo in object_list %}
+    <tr>
+      <th scope="row">{{todo.id}}</th>
+      <td>{{todo.name}}</td>
+      <td>{{todo.category.name}}</td>
+      <td>{{todo.description}}</td>
+        <td>{{todo.status}}</td>
+        <td>{{todo.date_created}}</td>
+        <td>{{todo.date_deadline}}</td>
+        <td>
+            <form method="post" action="/todo/list/">
+                {% csrf_token %}
+                <button type="submit" value={{todo.id}}>Gotowe!</button>
+            </form>
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
 </ul>
 
 {% endblock %}

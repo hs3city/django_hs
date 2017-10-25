@@ -12,3 +12,8 @@ class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = ['name']
+
+class ChangeStatusForm(forms.ModelForm):
+    class Meta:
+        model = ToDo
+        fields = ['status']

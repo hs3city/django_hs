@@ -12,6 +12,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('todo:categoryformadd')
 
 class ToDo(models.Model):
     TODO = 'TD'
@@ -27,6 +29,7 @@ class ToDo(models.Model):
         (8, 'Trudne'),
         (13, 'Bardzo trudne'),
     )
+
     name = models.CharField(max_length=250)
     description = models.TextField(verbose_name='Opis')
     date_created = models.DateField(auto_now_add=True)
