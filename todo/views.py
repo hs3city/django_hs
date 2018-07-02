@@ -8,21 +8,15 @@ from django.db.models import When, Count, Case, CharField
 
 
 def hello_show(request):
-    return render(request, 'start.html', {})
+    """ Welcome message page (django view can be function view or class based view)"""
+    return render(request, 'todo/start.html', {})
 
 
-class TodoList(ListView):
-    #TODO Add action to "Gotowe!" button.
+class TodoListView(ListView):
+    """ List display all user task """
     form_class = ChangeStatusForm
     model = ToDo
-    template_name = 'todo.html'
-
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['button_text'] = 'Gotowe'
-        return context
-
+    template_name = 'todo/todo_list.html'
 
     def post(self, request, *args, **kwargs):
         """ If user clikg 'Gotowe!' button change task status to DONE and save """
@@ -35,19 +29,19 @@ class TodoList(ListView):
         return redirect('todo:todo_list')
 
 
-class ToDoAdd(CreateView):
+class ToDoAddView(CreateView):
     """ User can add new taks to todolist """
     form_class = ToDoForm
     model = ToDo
-    template_name = 'todoform.html'
+    template_name = 'todo/todo_add.html'
     success_url = reverse_lazy('todo:todo_list')
 
-class ToDoCategoryAdd(FormView):
+class CategoriesView(FormView):
     """ Add new category page """
     model = Category
     form_class = CategoryForm
     context_object_name = 'category_list'
-    template_name = 'categories.html'
+    template_name = 'todo/categories.html'
     success_url = reverse_lazy('todo:categories')
 
     def get_context_data(self, **kwargs):
@@ -55,7 +49,7 @@ class ToDoCategoryAdd(FormView):
         you can pass to context everything you want display in django template
         :return dictionary
         """
-        context = super(ToDoCategoryAdd, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['categorys_list'] = Category.objects.all()
         return context
 
@@ -75,7 +69,8 @@ class ToDoCategoryAdd(FormView):
         return super().form_invalid(form)
 
 
-class ToDoCategoryDelete(DeleteView):
+class ToDoCategoryDeleteView(DeleteView):
+    """ Delete item on click delete button in CategoriesView """
     success_url = reverse_lazy('todo:categories')
     model = Category
-    template_name = 'category_delete.html'
+    template_name = 'todo/category_delete.html'
