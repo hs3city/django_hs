@@ -8,8 +8,22 @@
         <button type="submit">Add</button>
     </form>
 
-    {% for category in categorys_list %}
-        <p>{{ category }}</p>
-    {% endfor %}
-
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Akcja</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categorys_list %}
+            <tr>
+                <td>{{ category }}</td>
+                <td>
+                    <a href="{% url "todo:categories_delete" category.pk %}">X</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}

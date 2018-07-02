@@ -4,12 +4,6 @@
 <p>Listy Zadań</p>
 
 <ul>
-    {% for todo in object_list %}
-    <li>{{ todo.name }} {{todo.date_created}}</li>
-    {% endfor %}
-
-    <p></p>
-
     <table class="table table-striped">
   <thead>
     <tr>
@@ -30,16 +24,17 @@
       <td>{{todo.name}}</td>
       <td>{{todo.category.name}}</td>
       <td>{{todo.description}}</td>
-        <td>{{todo.status}}</td>
+        <td>{% if todo.status == "TD" %}Do zrobienia{% else %}Gotowe!{% endif %}</td>
         <td>{{todo.date_created}}</td>
         <td>{{todo.date_deadline}}</td>
         <td>
-            <form method="post" action="/todo/list/">
+            <form method="post">
                 {% csrf_token %}
-                <button type="submit" value={{todo.id}}>Gotowe!</button>
+                <button type="submit" name="gotowe" value={{todo.pk}}>Gotowe</button>
             </form>
         </td>
     </tr>
+      {{ todo.condi }}
   {% endfor %}
   </tbody>
 </table>

@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<form method="post" action="/todo/todoformadd/">
+<form method="post" action="{% url "todo:todo_add" %}">
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" value="Send" />

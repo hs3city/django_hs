@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+    Czy na pewno chcesz usunąć kategorie o naziwe: <b>{{ category }}</b>?
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Usuń</button>
+    </form>
+
+{% endblock content %}
