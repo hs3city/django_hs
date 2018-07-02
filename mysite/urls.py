@@ -6,7 +6,7 @@ import todo.views as todo
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', todo.hello_show),
-    url(r'todo/', include('todo.urls'))
+    url(r'todo/', include('todo.urls'), name='todo')
 ]
 
 if settings.DEBUG:

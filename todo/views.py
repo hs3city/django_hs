@@ -1,5 +1,6 @@
+from django.urls import reverse_lazy
 from django.utils import timezone
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, TemplateView, FormView
 from django.shortcuts import render
 from todo.models import ToDo, Category
 from todo.forms import ToDoForm, CategoryForm, ChangeStatusForm
@@ -27,27 +28,31 @@ class ToDoAdd(CreateView):
         context = super(ToDoAdd, self).get_context_data(**kwargs)
         return context
 
-class ToDoCategoryList(ListView):
+class ToDoCategoryAdd(FormView):
+    """ Add new category page """
     model = Category
-    context_object_name =  'category_list'
-    template_name = 'categorylist.html'
+    form_class = CategoryForm
+    context_object_name = 'category_list'
+    template_name = 'categories.html'
+    success_url = reverse_lazy('todo:categories')
 
     def get_context_data(self, **kwargs):
-        context = super(ToDoCategoryList, self).get_context_data(**kwargs)
-        context['some_data'] = 'this is just some data'
-        context['todo_list'] = ToDo.objects.all()
+        """
+        you can pass to context everything you want display in django template
+        :return dictionary
+        """
+        context = super(ToDoCategoryAdd, self).get_context_data(**kwargs)
+        context['categorys_list'] = Category.objects.all()
         return context
 
-class ToDoCategoryAdd(CreateView, ListView):
-    form_class = CategoryForm
-    model = Category
-    context_object_name = 'category_list'
-    template_name = 'categoryadd.html'
+    def form_valid(self, form):
+        """
+        save ModelForm here and back to success url,
+        instead this you can use django View or TemplateView base class
+        and do this in post method.
+        :param form:
+        :return: HttpResponse
+        """
+        form.save()
+        return super().form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        self.context = super(ToDoCategoryAdd, self).get_context_data(**kwargs)
-        return self.context
-
-    def post(self, request, *args, **kwargs):
-        stuff = request.POST.get('delete_category') #TODO add delete category action
-        return render(request, self.template_name, {'stuff': stuff, 'q': 12 })
